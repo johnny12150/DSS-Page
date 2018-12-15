@@ -22,7 +22,8 @@
 
     // 當submit按鈕被觸發
     $('.validate-form').on('submit', function () {
-        var check = true;
+        //控制submit後換不換頁
+        var check = false;
 
         for (var i = 0; i < input.length; i++) {
             if (validate(input[i]) == false) {
@@ -31,8 +32,44 @@
             }
         }
 
+        // call ajax with request body
+        console.log($(this).serialize());
+        // call_python_API($( this ).serialize()).then((res) => {
+        //     console.log(res);
+        //
+        //
+        // });
+
+        // 若return的是false則不會換頁
         return check;
     });
+
+    // ajax func
+    function call_python_API(req_query) {
+        console.log('call apis');
+        console.log(req_query.split('&'));
+        return new Promise((resolve, reject) => {
+            // fetch here
+            var url = 'http://122.116.10.167:3030/api/GET/prediction';
+            fetch(url, {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                // body: JSON.stringify({
+                //     req_query: req_query,
+                // })
+            })
+                .then(function (res) {
+                    return res.json();
+                })
+                .then(function (text) {
+                    console.log(text);
+                });
+            resolve('fetch done');
+        })
+    }
 
 
     $('.validate-form .input100').each(function () {
