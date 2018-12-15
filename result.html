@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade</title>
+    <link rel="stylesheet" href="css/result.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="js/result.js"></script>
+</head>
+<body>
+<div class="frame">
+    <div class="center">
+        <!-- default display -->
+        <!--<div class="notification -danger">-->
+        <!--<div class="notification__content">-->
+        <!--<i class="notification__icon fas fa-exclamation-circle"></i>-->
+        <!--<h3 class="notification__title">Oh snap!</h3>-->
+        <!--<p class="notification__text">-->
+        <!--An error has occured while creating an error report.-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--<button class="notification__button">-->
+        <!--Dismiss-->
+        <!--</button>-->
+        <!--</div>-->
+
+        <div class="notification -success">
+            <div class="notification__content">
+                <i class="notification__icon far fa-check-circle"></i>
+                <h3 class="notification__title">Grade A2 !</h3>
+                <p class="notification__text">
+                    Your profile was succesfully updated and new data will appear on your timeline.
+                </p>
+            </div>
+            <button class="notification__button">
+                Done!
+            </button>
+        </div>
+    </div>
+    <div class="colors">
+        <a href="#" data-status="-danger"></a>
+        <a href="#" data-status="-warning"></a>
+        <a href="#" data-status="-success" class="-active"></a>
+        <a href="#" data-status="-info"></a>
+    </div>
+</div>
+</body>
+</html>
