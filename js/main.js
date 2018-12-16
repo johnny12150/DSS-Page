@@ -34,12 +34,15 @@
 
         // call ajax with request body
         console.log($(this).serialize());
-        // call_python_API($( this ).serialize()).then((res) => {
-        //     console.log(res);
-        // redirect page
-        window.location.replace("result.html?service=777");
+        call_python_API($(this).serialize()).then((res) => {
+            // grade 值
+            console.log(res[0].split(')\n')[1]);
+            let redirect_param_grade = res[0].split(')\n')[1];
 
-        // });
+        // redirect page
+            window.location.replace("result.html?grade=" + redirect_param_grade);
+
+        });
 
         // 若return的是false則不會換頁
         return check;
@@ -47,28 +50,29 @@
 
     // ajax func
     function call_python_API(req_query) {
-        console.log('call apis');
-        console.log(req_query.split('&'));
+        // console.log(req_query.split('&'));
+        let data_body = [4000, " 36 months", 'RENT', "Fully Paid", 'car', 'Verified', "5 years", 50000];
         return new Promise((resolve, reject) => {
             // fetch here
-            var url = 'http://122.116.10.167:3030/api/GET/prediction';
+            var url = 'http://122.116.10.167:3030/api/POST/prediction';
             fetch(url, {
-                method: "GET",
+                method: "POST",
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
-                // body: JSON.stringify({
-                //     req_query: req_query,
-                // })
+                body: JSON.stringify({
+                    // req_query: req_query,
+                    req_query: data_body,
+                })
             })
                 .then(function (res) {
                     return res.json();
                 })
                 .then(function (text) {
                     console.log(text);
+                    resolve(text);
                 });
-            resolve('fetch done');
         })
     }
 

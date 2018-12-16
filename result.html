@@ -29,7 +29,7 @@
         <div class="notification -success">
             <div class="notification__content">
                 <i class="notification__icon far fa-check-circle"></i>
-                <h3 class="notification__title">Grade A2 !</h3>
+                <h3 class="notification__title">Grade A !</h3>
                 <p class="notification__text">
                     Your profile was successfully updated and new data will appear on your timeline.
                 </p>
@@ -50,8 +50,8 @@
     // fetch query in the uri
     const urlParams = new URLSearchParams(window.location.search);
     // get 'grade' or 'sub_grade'
-    const serviceParam = urlParams.get('service');
-    console.log(serviceParam);
+    const gradeParam = urlParams.get('grade');
+    console.log(gradeParam);
 </script>
 </body>
 </html>

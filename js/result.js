@@ -66,7 +66,7 @@ jQuery(function ($) {
                 _icon = 'fas fa-info-circle';
                 break;
             case '-success' :
-                _title = 'Grade A2 !';
+                _title = 'Grade A !';
                 _text = 'Your profile was succesfully updated and new data will appear on your timeline.';
                 _buttonText = 'Done!';
                 _icon = 'far fa-check-circle';
