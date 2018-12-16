@@ -31,7 +31,7 @@
                 <i class="notification__icon far fa-check-circle"></i>
                 <h3 class="notification__title">Grade A2 !</h3>
                 <p class="notification__text">
-                    Your profile was succesfully updated and new data will appear on your timeline.
+                    Your profile was successfully updated and new data will appear on your timeline.
                 </p>
             </div>
             <button class="notification__button">
@@ -46,5 +46,12 @@
         <a href="#" data-status="-info"></a>
     </div>
 </div>
+<script>
+    // fetch query in the uri
+    const urlParams = new URLSearchParams(window.location.search);
+    // get 'grade' or 'sub_grade'
+    const serviceParam = urlParams.get('service');
+    console.log(serviceParam);
+</script>
 </body>
 </html>

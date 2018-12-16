@@ -36,8 +36,9 @@
         console.log($(this).serialize());
         // call_python_API($( this ).serialize()).then((res) => {
         //     console.log(res);
-        //
-        //
+        // redirect page
+        window.location.replace("result.html?service=777");
+
         // });
 
         // 若return的是false則不會換頁
