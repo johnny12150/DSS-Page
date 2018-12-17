@@ -39,7 +39,7 @@
             console.log(res[0].split(')\n')[1]);
             let redirect_param_grade = res[0].split(')\n')[1];
 
-        // redirect page
+            // redirect page
             window.location.replace("result.html?grade=" + redirect_param_grade);
 
         });
@@ -50,7 +50,10 @@
 
     // ajax func
     function call_python_API(req_query) {
+
         // console.log(req_query.split('&'));
+
+        // todo: 從req_query改
         let data_body = [4000, " 36 months", 'RENT', "Fully Paid", 'car', 'Verified', "5 years", 50000];
         return new Promise((resolve, reject) => {
             // fetch here
