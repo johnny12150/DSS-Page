@@ -34,6 +34,7 @@
 
         // call ajax with request body
         console.log($(this).serialize());
+
         call_python_API($(this).serialize()).then((res) => {
             // grade 值
             console.log(res[0].split(')\n')[1]);
@@ -50,11 +51,29 @@
 
     // ajax func
     function call_python_API(req_query) {
+        // 存各query等於的值 (array)
+        let query_params = req_query.split('&');
+        // 存從query中解析出來的params
+        let params = [];
+        for (let i = 0; i < query_params.length; i++)
+            params.push(query_params[i].split('=')[1])
 
-        // console.log(req_query.split('&'));
+        // 預測所需的參數
+        let emp_length = unescape(params[0]);
+        let home_ownership = params[1];
+        let term = ' ' + unescape(params[2]);
+        let purpose = params[3];
+        let loan_amount = parseInt(params[4]);
+        let annual_income = parseInt(params[5]);
+        let loan_status = 'Fully Paid';
+        let verification = 'Verified';
 
-        // todo: 從req_query改
-        let data_body = [4000, " 36 months", 'RENT', "Fully Paid", 'car', 'Verified', "5 years", 50000];
+        // let data_body = [4000, " 36 months", 'RENT', "Fully Paid", 'car', 'Verified', "5 years", 50000];
+        let data_body = [];
+        data_body.push(loan_amount, term, home_ownership, loan_status, purpose, verification, emp_length, annual_income);
+
+        console.log(data_body);
+
         return new Promise((resolve, reject) => {
             // fetch here
             var url = 'http://122.116.10.167:3030/api/POST/prediction';
@@ -65,7 +84,6 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    // req_query: req_query,
                     req_query: data_body,
                 })
             })
@@ -76,6 +94,7 @@
                     console.log(text);
                     resolve(text);
                 });
+
         })
     }
 
