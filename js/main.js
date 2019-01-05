@@ -42,9 +42,13 @@
 
             // gcp & azure (API)
             let redirect_param_grade = res.Results.output1[0]["Scored Labels"];
+            // 預估出來的類別名稱
+            let probabity = 'Scored Probabilities for Class "' + redirect_param_grade + '"';
+            // 預估出的類別的機率
+            // console.log(res.Results.output1[0][probabity]);
 
             // redirect page
-            window.location.replace("result.html?grade=" + redirect_param_grade);
+            window.location.replace("result.html?grade=" + redirect_param_grade + "&probability=" + res.Results.output1[0][probabity]);
 
         });
 

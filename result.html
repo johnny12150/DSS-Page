@@ -30,7 +30,7 @@
             <div class="notification__content">
                 <i class="notification__icon far fa-check-circle"></i>
                 <h3 class="notification__title">Grade A !</h3>
-                <p class="notification__text">
+                <p class="notification__text" id="prediction-accuracy">
                     Your profile was successfully updated and new data will appear on your timeline.
                 </p>
             </div>
@@ -55,6 +55,7 @@
     // var grade = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     // $('.notification.-success .notification__content .notification__title').html('Grade ' + grade[gradeParam]);
     $('.notification.-success .notification__content .notification__title').html('Grade ' + gradeParam);
+    $('#prediction-accuracy').html('Accuracy:  ' + urlParams.get('probability'));
 </script>
 </body>
 </html>
