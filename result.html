@@ -52,8 +52,9 @@
     // get 'grade' or 'sub_grade'
     const gradeParam = urlParams.get('grade');
     console.log(gradeParam);
-    var grade = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-    $('.notification.-success .notification__content .notification__title').html('Grade ' + grade[gradeParam]);
+    // var grade = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+    // $('.notification.-success .notification__content .notification__title').html('Grade ' + grade[gradeParam]);
+    $('.notification.-success .notification__content .notification__title').html('Grade ' + gradeParam);
 </script>
 </body>
 </html>

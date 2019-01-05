@@ -36,9 +36,12 @@
         console.log($(this).serialize());
 
         call_python_API($(this).serialize()).then((res) => {
-            // grade 值
-            console.log(res[0].split(')\n')[1]);
-            let redirect_param_grade = res[0].split(')\n')[1];
+            // grade 值 (local API)
+            // console.log(res[0].split(')\n')[1]);
+            // let redirect_param_grade = res[0].split(')\n')[1];
+
+            // gcp & azure (API)
+            let redirect_param_grade = res.Results.output1[0]["Scored Labels"];
 
             // redirect page
             window.location.replace("result.html?grade=" + redirect_param_grade);
@@ -75,17 +78,33 @@
         console.log(data_body);
 
         return new Promise((resolve, reject) => {
-            // fetch here
-            var url = 'http://122.116.10.167:3030/api/POST/prediction';
+            // local API server
+            // var url = 'http://122.116.10.167:3030/api/POST/prediction';
+            // fetch(url, {
+            //     method: "POST",
+            //     headers: {
+            //         'Accept': 'application/json, text/plain, */*',
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //         req_query: data_body,
+            //     })
+            // })
+            //     .then(function (res) {
+            //         return res.json();
+            //     })
+            //     .then(function (text) {
+            //         console.log(text);
+            //         resolve(text);
+            //     });
+
+            // gcp API endpoint
+            let url = 'https://us-central1-test-buddhism-api.cloudfunctions.net/grade-predict';
             fetch(url, {
-                method: "POST",
+                method: "GET",
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    req_query: data_body,
-                })
+                }
             })
                 .then(function (res) {
                     return res.json();
