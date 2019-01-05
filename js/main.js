@@ -32,23 +32,24 @@
             }
         }
 
-        // call ajax with request body
+        // request body (form parameters)
         console.log($(this).serialize());
 
+        // call ajax with request body
         call_python_API($(this).serialize()).then((res) => {
             // grade 值 (local API)
             // console.log(res[0].split(')\n')[1]);
             // let redirect_param_grade = res[0].split(')\n')[1];
 
-            // gcp & azure (API)
+            // gcp & azure API
             let redirect_param_grade = res.Results.output1[0]["Scored Labels"];
             // 預估出來的類別名稱
-            let probabity = 'Scored Probabilities for Class "' + redirect_param_grade + '"';
+            let probability = 'Scored Probabilities for Class "' + redirect_param_grade + '"';
             // 預估出的類別的機率
             // console.log(res.Results.output1[0][probabity]);
 
             // redirect page
-            window.location.replace("result.html?grade=" + redirect_param_grade + "&probability=" + res.Results.output1[0][probabity]);
+            window.location.replace("result.html?grade=" + redirect_param_grade + "&probability=" + res.Results.output1[0][probability]);
 
         });
 
