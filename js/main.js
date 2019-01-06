@@ -69,16 +69,17 @@
         // 預測所需的參數
         let emp_length = unescape(params[0]);
         let home_ownership = params[1];
-        let term = ' ' + unescape(params[2]);
-        let purpose = params[3];
-        let loan_amount = parseInt(params[4]);
-        let annual_income = parseInt(params[5]);
+        let term = ' ' + unescape(params[3]);
+        let purpose = params[4];
+        let loan_amount = parseInt(params[5]);
+        let annual_income = parseInt(params[6]);
         let loan_status = 'Fully Paid';
         let verification = 'Verified';
+        let int_rate = parseFloat(params[2]);
 
         // let data_body = [4000, " 36 months", 'RENT', "Fully Paid", 'car', 'Verified', "5 years", 50000];
         let data_body = [];
-        data_body.push(loan_amount, term, home_ownership, loan_status, purpose, verification, emp_length, annual_income);
+        data_body.push(loan_amount, term, home_ownership, loan_status, purpose, verification, emp_length, annual_income, int_rate);
 
         console.log(data_body);
 
@@ -104,7 +105,7 @@
             //     });
 
             // gcp API endpoint
-            let url = 'https://us-central1-test-buddhism-api.cloudfunctions.net/grade-predict';
+            let url = 'https://us-central1-test-buddhism-api.cloudfunctions.net/grade-predict?int_rate=' + data_body[8];
             fetch(url, {
                 method: "GET",
                 headers: {
